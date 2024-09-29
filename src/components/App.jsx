@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from 'pages/Home';
-import Movies from 'pages/Movies';
 import Layout from './Layout';
 import NotFound from 'pages/NotFound';
+
+// Cargar los componentes de manera asíncrona
+const Home = lazy(() => import('pages/Home'));
+const Movies = lazy(() => import('pages/Movies'));
 
 function App() {
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="movies/*" element={<Movies />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="movies/*" element={<Movies />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </Suspense>
     </div>
   );
 }
