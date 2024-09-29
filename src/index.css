@@ -1,4 +1,4 @@
-@import-normalize; /* bring in normalize.css styles */
+ 
 
 body {
   margin: 0;
@@ -7,9 +7,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+nav{
+background-color: #1a3b95;
+  color: white;
+  padding: 10px;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
 }

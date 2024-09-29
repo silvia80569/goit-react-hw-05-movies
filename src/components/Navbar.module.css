@@ -1,0 +1,7 @@
+.active {
+  font-weight: bold;
+  color: blue;
+}
+.inactive {
+  color: rgb(244, 240, 240);
+}

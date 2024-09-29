@@ -1,0 +1,42 @@
+/* Cast.module.css */
+
+.castContainer {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.castTitle {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.castList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.castMember {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.castMember:last-child {
+  border-bottom: none;
+}
+
+.button {
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}

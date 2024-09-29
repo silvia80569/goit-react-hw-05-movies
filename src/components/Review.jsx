@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
+import styles from './Review.module.css';
 
 const Review = () => {
   const { movieId } = useParams();
@@ -26,12 +27,14 @@ const Review = () => {
   if (loading) return <h1>Loading...</h1>;
 
   return (
-    <div>
-      <button onClick={() => navigate(-1)}>Back</button>
+    <div className={styles.container}>
+      <button className={styles.button} onClick={() => navigate(-1)}>
+        Back
+      </button>
       <h1>Reviews</h1>
       <ul>
         {reviews.map(review => (
-          <li key={review.id}>
+          <li className={styles.reviewItem} key={review.id}>
             <h3>{review.author}</h3>
             <p>{review.content}</p>
           </li>

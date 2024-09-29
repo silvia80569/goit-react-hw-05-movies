@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link, Outlet } from 'react-router-dom';
 import Axios from 'axios';
+import styles from './MoviesDetailles.module.css';
 
 const MoviesDetails = () => {
   const { movieId } = useParams();
@@ -25,28 +26,33 @@ const MoviesDetails = () => {
   if (loading) return <h1>Loading...</h1>;
 
   return (
-    <div>
-      <Link to="/movies">Back to movies</Link>
+    <div className={styles.container}>
+      <Link className={styles.backLink} to="/movies">
+        Back to movies
+      </Link>
 
       {movie ? (
         <>
-          <h1>{movie.title}</h1>
+          <h1 className={styles.movieTitle}>{movie.title}</h1>
           <img
+            className={styles.movieImage}
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.title}
           />
-          <p>{movie.overview}</p>
-          <p>
+          <p className={styles.movieOverview}>{movie.overview}</p>
+          <p className={styles.releaseDate}>
             Release date: {new Date(movie.release_date).toLocaleDateString()}
           </p>
 
-          {/* Rutas relativas */}
-          <nav>
-            <Link to="cast">Cast</Link>
-            <Link to="review">Review</Link>
+          <nav className={styles.nav}>
+            <Link className={styles.navLink} to="cast">
+              Cast
+            </Link>
+            <Link className={styles.navLink} to="review">
+              Review
+            </Link>
           </nav>
 
-          {/* Renderizar contenido de las rutas anidadas */}
           <Outlet />
         </>
       ) : (

@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
+import styles from './Cast.module.css';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -12,13 +13,12 @@ const Cast = () => {
     Axios.get(
       `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=65c8682b0ea793c5f0ab74a2479dcb8c`
     )
-      .then(response => {
-        console.log('Cast:', response.data.cast);
-        setCast(response.data.cast);
-        setLoading(false);
+      .then(res => {
+        console.log('Cast:', res.data.cast);
+        setCast(res.data.cast);
       })
-      .catch(err => {
-        console.error('Error fetching cast:', err);
+      .catch(err => console.error('Error fetching cast:', err))
+      .finally(() => {
         setLoading(false);
       });
   }, [movieId]);
@@ -26,17 +26,23 @@ const Cast = () => {
   if (loading) return <h1>Loading...</h1>;
 
   return (
-    <>
-      <button onClick={() => navigate(-1)}>Back</button>
-      <h2>Cast</h2>
-      <ul>
-        {cast.map(actor => (
-          <li key={actor.cast_id}>
-            {actor.name} as {actor.character}
-          </li>
-        ))}
-      </ul>
-    </>
+    <div className={styles.castContainer}>
+      <button className={styles.button} onClick={() => navigate(-1)}>
+        Back
+      </button>
+      <h1 className={styles.castTitle}>Cast</h1>
+      {cast.length > 0 ? (
+        <ul className={styles.castList}>
+          {cast.map(member => (
+            <li className={styles.castMember} key={member.id}>
+              <strong>{member.name}</strong> as {member.character}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No cast information found.</p>
+      )}
+    </div>
   );
 };
 

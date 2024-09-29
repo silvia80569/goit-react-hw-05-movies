@@ -1,0 +1,51 @@
+/* MoviesDetails.module.css */
+.container {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.backLink {
+  display: inline-block;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.movieTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.movieImage {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.movieOverview {
+  margin: 20px 0;
+}
+
+.releaseDate {
+  font-style: italic;
+  color: #555;
+}
+
+.nav {
+  margin: 20px 0;
+}
+
+.navLink {
+  margin-right: 15px;
+  text-decoration: none;
+  color: white;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+}
